@@ -15,7 +15,7 @@ const postRouter = require('./routes/post-routes')
 const respondRouter = require('./routes/respond-routes')
 const { addCount } = require('./controllers/post-controllers')
 
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
+app.use(cors({credentials: true, origin: '*'}))
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(boolParser())
