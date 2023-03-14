@@ -27,10 +27,11 @@ app.use('/api', authRouter)
 app.use('/api', respondRouter)
 
 const port = process.env.NODEJS_PORT || 4000
+const localhost = '0.0.0.0'
 
 mongoose.connect(`mongodb+srv://musthafa:${process.env.MONGODB_PASSWORORD}@mern-blog.mhkeity.mongodb.net/?retryWrites=true&w=majority`).then(() => {
-	app.listen(port)
-	console.log(`Database is connected! Listening to http://localhost:${port}`)
+	app.listen(port, localhost)
+	console.log(`Database is connected! Listening to http://${localhost}:${port}`)
 }).catch(err => console.log(err))
 
 // connect to mongoshell
