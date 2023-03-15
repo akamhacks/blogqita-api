@@ -18,10 +18,6 @@ app.use(bodyParser.json())
 app.use(boolParser())
 app.use(cookieParser())
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-app.all('/*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
 app.get('/', (req, res) => {
   res.json({
     message: '﷽',
