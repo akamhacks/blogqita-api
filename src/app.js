@@ -9,6 +9,7 @@ const app = express();
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const boolParser = require('express-query-boolean')
+const path = require('path')
 
 app.use(morgan('dev'));
 app.use(helmet());
@@ -17,7 +18,7 @@ app.use(express.json());
 app.use(bodyParser.json())
 app.use(boolParser())
 app.use(cookieParser())
-app.use('/uploads', express.static(__dirname + '/uploads'))
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.get('/', (req, res) => {
   res.json({
