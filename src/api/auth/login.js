@@ -30,9 +30,9 @@ const login = async (req, res, next) => {
 		expiresIn: "1d"
 	})
 
-	// if (req.cookies[`${existingUser._id}`]) {
-	// 	req.cookies[`${existingUser._id}`] = "";
-	// }
+	if (req.cookies[`${existingUser._id}`]) {
+		req.cookies[`${existingUser._id}`] = "";
+	}
 
 	console.log("Generated Token\n", token)
 	res.cookie(String(existingUser._id), token, {
