@@ -13,7 +13,7 @@ const path = require('path')
 
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors({credentials: true, origin: '*'}))
+app.use(cors({credentials: false, origin: '*'}))
 app.use(express.json());
 app.use(bodyParser.json())
 app.use(boolParser())
