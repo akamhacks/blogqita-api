@@ -14,6 +14,7 @@ const path = require('path')
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(express.json());
+app.use(cors({credentials: true, origin: 'https://blogqita-client.vercel.app'}))
 app.use(bodyParser.json())
 app.use(boolParser())
 app.use(cookieParser())
