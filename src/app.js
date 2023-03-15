@@ -10,25 +10,24 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const boolParser = require('express-query-boolean')
 const path = require('path')
-
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(express.json());
-app.use(cors({credentials: true, origin: 'https://blogqita-client.vercel.app'}))
+app.use(cors({ credentials: true, origin: 'https://blogqita-client.vercel.app' }))
 app.use(bodyParser.json())
 app.use(boolParser())
 app.use(cookieParser())
-app.options('*', cors())
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-
+app.all('/*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.get('/', (req, res) => {
   res.json({
     message: '﷽',
   });
 });
-
 app.use('/api/v1', api);
-
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
