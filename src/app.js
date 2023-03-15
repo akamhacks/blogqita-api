@@ -6,11 +6,18 @@ require('dotenv').config();
 const middlewares = require('./middlewares');
 const api = require('./api');
 const app = express();
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+const boolParser = require('express-query-boolean')
 
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json())
+app.use(boolParser())
+app.use(cookieParser())
+app.use('/uploads', express.static(__dirname + '/uploads'))
 
 app.get('/', (req, res) => {
   res.json({

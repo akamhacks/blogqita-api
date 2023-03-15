@@ -1,4 +1,4 @@
-const sendVerifyEmail = require('./utils/sendVerifyEmail')
+const sendVerifyEmail = require('../utils/sendVerifyEmail')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const salt = bcrypt.genSaltSync(10)

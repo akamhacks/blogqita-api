@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const User = require('../../models/User')
-const sendResetPassword = require('./utils/sendResetPassword')
+const sendResetPassword = require('../utils/sendResetPassword')
 
 const requestResetPassword = async (req, res, next) => {
 	const { email } = req.query
