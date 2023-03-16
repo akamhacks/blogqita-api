@@ -17,7 +17,7 @@ app.use(cors({ credentials: true, origin: 'https://blogqita-client.vercel.app' }
 app.use(bodyParser.json())
 app.use(boolParser())
 app.use(cookieParser())
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use('/uploads', cors(), express.static(path.join(__dirname, '../uploads')));
 app.get('/', (req, res) => {
   res.json({
     message: '﷽',
