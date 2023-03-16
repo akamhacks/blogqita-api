@@ -37,8 +37,8 @@
 		form.addEventListener('submit', async (e) => {
 			e.preventDefault()
 			const res = await axios.post(
-        "https://blogqita-api.up.railway.app/api/v1/auth/login",
-        { email, password },
+        "http://localhost:5000/api/v1/auth/login",
+        { email: email, password: password },
         {
           withCredentials: true,
         }
@@ -47,9 +47,7 @@
       	console.log(response)
       })
       .catch((response) => {
-        setEmail('')
-        setPassword('')
-        alert(response?.response?.data?.message);
+      	alert(response);
       });
 		})
 	</script>

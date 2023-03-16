@@ -10,7 +10,6 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const boolParser = require('express-query-boolean')
 const path = require('path')
-app.options('*', cors())
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(express.json());

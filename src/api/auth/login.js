@@ -8,6 +8,8 @@ const login = async (req, res, next) => {
 		req.headers.cookie = ''
 	}
 
+	console.log(req.body)
+
 	let existingUser;
 	try{
 		existingUser = await User.findOne({ email: email })
