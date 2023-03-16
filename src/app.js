@@ -10,14 +10,26 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const boolParser = require('express-query-boolean')
 const path = require('path')
+const allowList = ['https://blogqita-client.vercel.app', 'http://localhost:3000', 'http://localhost:4000', 'http://localhost:5000', 'http://localhost:8000', 'http://localhost:8000']
+const corsOptionsDelegate = function (req, callback) {
+  let corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
+
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'https://blogqita-client.vercel.app' }))
+app.use(cors(corsOptionsDelegate))
+// app.use(cors({ credentials: true, origin: 'https://blogqita-client.vercel.app' }))
 app.use(bodyParser.json())
 app.use(boolParser())
 app.use(cookieParser())
-app.use('/uploads', cors(), express.static(path.join(__dirname, '../uploads')));
+app.use('/uploads', cors(corsOptionsDelegate), express.static(path.join(__dirname, '../uploads')));
 app.get('/', (req, res) => {
   res.json({
     message: '﷽',
