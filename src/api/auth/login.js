@@ -39,9 +39,7 @@ const login = async (req, res, next) => {
 		path: "/",
 		expires: new Date(Date.now() + 600000 * 24), // 1 day
 		httpOnly: true,
-		sameSite: "lax",
-		secure: true,  // true should be used in production (HTTPS) but can't be used in development (HTTP)
-		domain: "https://blogqita-client.vercel.app/"
+		sameSite: "lax"
 	})
 
 	return res.status(200).json({ message: "Successfully Logged In", firstName: existingUser.firstName, name: existingUser.name, email: existingUser.email, id: existingUser._id, token })

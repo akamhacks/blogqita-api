@@ -16,15 +16,7 @@ app.use(express.json());
 app.use(bodyParser.json())
 app.use(boolParser())
 app.use(cookieParser())
-app.use(cors({
-  credentials: true,
-  origin: ['https://blogqita-client.vercel.app', 'http://localhost:3000', 'http://localhost:4000', 'http://localhost:5000', 'http://localhost:8000', 'http://localhost:8080', 'http://localhost:5173'],
-}))
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-})
+app.use(cors({ credentials: true, origin: ['https://blogqita-client.vercel.app', 'http://localhost:3000', 'http://localhost:4000', 'http://localhost:5000', 'http://localhost:8000', 'http://localhost:8080', 'http://localhost:5173'] }))
 app.use('/uploads', cors(), express.static(path.join(__dirname, '../uploads')));
 app.get('/', (req, res) => {
   res.json({
