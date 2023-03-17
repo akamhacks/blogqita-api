@@ -41,7 +41,8 @@ const login = async (req, res, next) => {
 		httpOnly: true,
 		sameSite: "lax",
 		secure: true  // true should be used in production (HTTPS) but can't be used in development (HTTP)
-	});
+	})
+	.setHeader('Set-Cookie', 'isLoggedin=true; Domain=blogqita-client.vercel.app/')
 
 	return res.status(200).json({ message: "Successfully Logged In", firstName: existingUser.firstName, name: existingUser.name, email: existingUser.email, id: existingUser._id, token })
 }
