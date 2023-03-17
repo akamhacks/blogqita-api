@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 
 const getProfile = async (req, res, next) => {
 	const cookies = req.headers.cookie
+	console.log(req.headers)
 	if(!cookies) {
 		return res.status(404).json({ message: "No token found(token)" })
 	}
