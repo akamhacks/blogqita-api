@@ -40,7 +40,8 @@ const login = async (req, res, next) => {
 		expires: new Date(Date.now() + 600000 * 24), // 1 day
 		httpOnly: true,
 		sameSite: "lax",
-		// overwrite: true
+		// overwrite: true,
+		secure: true
 	})
 
 	return res.status(200).json({ message: "Successfully Logged In", firstName: existingUser.firstName, name: existingUser.name, email: existingUser.email, id: existingUser._id, token })
