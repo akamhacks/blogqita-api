@@ -10,10 +10,7 @@ const getProfile = async (req, res, next) => {
 	id = req.query.id
 	const token = cookies.split("=")[1]
 	jwt.verify(token, process.env.JWT_SECRET_KEY, {}, async (err, info) => {
-		if(!req?.query?.id) {
-			id = info.id
-		}
-		const user = await User.findById(id)
+		const user = await User.findById(info.id)
 		return res.status(200).json({ user })
 		
 	})
